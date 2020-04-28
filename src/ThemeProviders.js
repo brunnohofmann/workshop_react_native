@@ -5,13 +5,15 @@ import {createContext} from 'react';
 import themes from './configs/themes';
 import App from './App';
 
+const DEFAULT_THEME = 'light';
+
 export const ThemeProviderContext = createContext({
   setTheme: () => {},
-  theme: 'light',
+  theme: DEFAULT_THEME,
 });
 
 const Providers = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(DEFAULT_THEME);
 
   return (
     <ThemeProviderContext.Provider value={{setTheme, theme}}>
