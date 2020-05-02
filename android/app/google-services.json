@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "391974711276",
+    "firebase_url": "https://workshop-react-native-tw.firebaseio.com",
+    "project_id": "workshop-react-native-tw",
+    "storage_bucket": "workshop-react-native-tw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391974711276:android:db3ddbf1268fed31d31ac9",
+        "android_client_info": {
+          "package_name": "com.fakekeep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391974711276-5bbks9o4kurqujiojch5sdspi1grrmkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR7v_3XlIEaYW7FcwT3yPfROMlEyZn8tM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391974711276-5bbks9o4kurqujiojch5sdspi1grrmkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
