@@ -2,21 +2,20 @@ import 'react-native-gesture-handler';
 import { enableScreens } from 'react-native-screens';
 enableScreens();
 
-import React, { useContext } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import React, {useContext, useEffect} from 'react';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import ViewContainer from './components/ViewContainer';
 import Button from './components/Button';
-import { ThemeProviderContext } from './ThemeProviders';
+import {ThemeProviderContext} from './ThemeProviders';
 import StatusBar from './components/StatusBar';
-import { pushNotificationCheckPermission } from './utils/push-notification';
+import {pushNotificationService} from './utils/push-notification';
 
 export default () => {
-  // useEffect(() => {
-  //   pushNotificationCheckPermission();
-  // });
+  useEffect(() => {
+    pushNotificationService();
+  });
 
-  const { setTheme, theme } = useContext(ThemeProviderContext);
-
+  const {setTheme, theme} = useContext(ThemeProviderContext);
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };

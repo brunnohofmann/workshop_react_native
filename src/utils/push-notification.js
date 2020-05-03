@@ -1,10 +1,9 @@
-import React from 'react';
-import { AsyncStorage } from 'react-native';
-import firebase, { RemoteMessage } from 'react-native-firebase';
+import {AsyncStorage} from 'react-native';
+import firebase, {RemoteMessage} from 'react-native-firebase';
 
 const messaging = firebase.messaging();
 
-const checkPermission = async () => {
+const checkPermissionAndListMessages = async () => {
   const enabled = await messaging.hasPermission();
   if (enabled) {
     await getToken();
@@ -35,14 +34,10 @@ const requestPermission = async () => {
   }
 };
 
-export const pushNotificationCheckPermission = () => checkPermission();
-
 const notificationListener = () => {
   messaging.onMessage((message: RemoteMessage) => {
     console.log(message);
   });
-
-  firebase.notifications().onNotification((notification) => {
-    console.log(notification);
-  });
 };
+
+export const pushNotificationService = () => checkPermissionAndListMessages();
