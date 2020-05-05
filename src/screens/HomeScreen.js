@@ -4,17 +4,26 @@ import ViewContainer from '../components/ViewContainer';
 import {ThemeProviderContext} from '../ThemeProviders';
 import FloatingButton from '../components/FloatingButton';
 
-export default () => {
+import {routes} from '../routes/routes';
+
+export default ({navigation}) => {
+  navigation.setOptions({
+    title: 'Home',
+  });
+
   const {setTheme, theme} = useContext(ThemeProviderContext);
 
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
+  const goToCreateNoteScreen = () => {
+    navigation.navigate(routes.CREATE_NOTE_SCREEN);
+  };
+
   return (
     <ViewContainer>
-      <Button text="Trocar tema" onPress={changeTheme} />
-      <FloatingButton onPress={changeTheme} />
+      <FloatingButton onPress={goToCreateNoteScreen} />
     </ViewContainer>
   );
 };
