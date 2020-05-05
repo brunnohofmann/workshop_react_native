@@ -18,8 +18,8 @@ export default () => {
     <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
       <StatusBar />
       <NavigationContainer>
-        <MainDrawer />
-        {/*<MainDrawerWithStack />*/}
+        {/*<MainDrawer />*/}
+        <MainDrawerWithStack />
       </NavigationContainer>
     </SafeAreaProvider>
   );

@@ -7,7 +7,15 @@ const Drawer = createDrawerNavigator();
 
 export default () => (
   <Drawer.Navigator>
-    <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-    <Drawer.Screen name="CreateNoteScreen" component={CreateNoteScreen} />
+    <Drawer.Screen
+      options={{drawerLabel: 'Home'}}
+      name="HomeScreen"
+      component={HomeScreen}
+    />
+    <Drawer.Screen
+      options={{drawerLabel: 'Create Note'}}
+      name="CreateNoteScreen"
+      component={CreateNoteScreen}
+    />
   </Drawer.Navigator>
 );
