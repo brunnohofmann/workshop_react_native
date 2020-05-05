@@ -1,27 +1,26 @@
 import 'react-native-gesture-handler';
 import {enableScreens} from 'react-native-screens';
+import React from 'react';
+import {
+  initialWindowSafeAreaInsets,
+  SafeAreaProvider,
+} from 'react-native-safe-area-context';
+import {NavigationContainer} from '@react-navigation/native';
+
+import StatusBar from './components/StatusBar';
+import MainDrawer from './routes/MainDrawer';
+import MainDrawerWithStack from './routes/MainDrawerWithStack';
+
 enableScreens();
 
-import React, {useContext} from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import ViewContainer from './components/ViewContainer';
-import Button from './components/Button';
-import {ThemeProviderContext} from './ThemeProviders';
-import StatusBar from './components/StatusBar';
-
 export default () => {
-  const {setTheme, theme} = useContext(ThemeProviderContext);
-
-  const changeTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
       <StatusBar />
-      <ViewContainer>
-        <Button text="Trocar tema" onPress={changeTheme} />
-      </ViewContainer>
+      <NavigationContainer>
+        <MainDrawer />
+        {/*<MainDrawerWithStack />*/}
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };

@@ -6,7 +6,7 @@ export default {
       primaryTextColor: '#fff',
     },
     statusBar: {
-      backgroundColor: '#fff',
+      backgroundColor: '#337ab7',
       barStyle: 'dark-content',
     },
   },
