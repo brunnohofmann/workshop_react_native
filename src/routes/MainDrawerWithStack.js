@@ -31,9 +31,14 @@ export const CustomDrawerComp = (props) => {
           onPress={() => navigate(routes.HOME_SCREEN)}
         />
         <DrawerItem
-          label="Editar Perfil"
+          label="Criar nota"
           hasBottomDivider
           onPress={() => navigate(routes.CREATE_NOTE_SCREEN)}
+        />
+        <DrawerItem
+          label="Listar notas"
+          hasBottomDivider
+          onPress={() => navigate(routes.LIST_NOTES_SCREEN)}
         />
       </View>
       <View>
