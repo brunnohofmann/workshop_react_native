@@ -25,6 +25,7 @@ const CustomButtonText = styled(Text)`
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
+  padding: 10px;
 `;
 
 export default ({onPress, text}) => {
