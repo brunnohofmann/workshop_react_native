@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {View, ActivityIndicator, FlatList, Text} from 'react-native';
+import {View, ActivityIndicator, FlatList} from 'react-native';
 import styled from 'styled-components';
 
 import ViewContainer from '../components/ViewContainer';
 import Button from '../components/Button';
 import {getNotes} from '../services/NoteService';
+import {routes} from '../routes/routes';
+import FloatingButton from '../components/FloatingButton';
+import OpenDrawerIcon from '../components/OpenDrawerIcon';
+import Title from '../components/Typography/Title';
+import Text from '../components/Typography/Text';
 
 const NoteItem = styled(View)`
   padding: 10px 0px 10px 20px;
@@ -14,11 +19,6 @@ const NoteItem = styled(View)`
   border-left-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
-`;
-
-const Title = styled(Text)`
-  font-weight: bold;
-  font-size: 16px;
 `;
 
 const Item = ({value}) => {
@@ -33,7 +33,10 @@ const Item = ({value}) => {
 };
 
 export default ({navigation}) => {
-  navigation.setOptions({title: 'My notes'});
+  navigation.setOptions({
+    title: 'My notes',
+    headerLeft: () => <OpenDrawerIcon />,
+  });
 
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState([]);
@@ -45,9 +48,12 @@ export default ({navigation}) => {
   };
 
   const reload = async () => {
-    console.log('atualizar');
     setLoading(true);
     await loadNotes();
+  };
+
+  const goToCreateNoteScreen = () => {
+    navigation.navigate(routes.CREATE_NOTE_SCREEN);
   };
 
   useEffect(async () => {
@@ -60,14 +66,15 @@ export default ({navigation}) => {
         <ActivityIndicator size="large" />
       ) : (
         <ViewContainer>
+          <Button onPress={reload} text="Atualizar" />
           <FlatList
             data={notes}
             renderItem={({item}) => <Item value={item} />}
             keyExtractor={(item) => item._id}
           />
-          <Button onPress={reload} text="Atualizar" />
         </ViewContainer>
       )}
+      <FloatingButton onPress={goToCreateNoteScreen} />
     </ViewContainer>
   );
 };
