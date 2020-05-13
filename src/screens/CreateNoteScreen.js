@@ -2,15 +2,24 @@ import React, {useState} from 'react';
 import {View, ActivityIndicator} from 'react-native';
 import {Formik} from 'formik';
 import styled from 'styled-components';
+import * as Yup from 'yup';
 
 import ViewContainer from '../components/ViewContainer';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import {createNote} from '../services/NoteService';
+import Text from '../components/Typography/Text';
 
 const FormItem = styled(View)`
   padding: 10px 0px 10px 0px;
 `;
+
+const NoteSchema = Yup.object().shape({
+  title: Yup.string().min(2, 'Too Short!').required('Required'),
+  note: Yup.string(),
+});
+
+const initialState = {title: '', note: ''};
 
 export default ({navigation}) => {
   navigation.setOptions({title: 'Create Note'});
@@ -30,8 +39,11 @@ export default ({navigation}) => {
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <Formik initialValues={{title: '', note: ''}} onSubmit={onSubmit}>
-          {({handleChange, handleSubmit, values, setFieldTouched}) => (
+        <Formik
+          validationSchema={NoteSchema}
+          initialValues={initialState}
+          onSubmit={onSubmit}>
+          {({handleChange, handleSubmit, values, setFieldTouched, errors}) => (
             <>
               <FormItem>
                 <Input
@@ -40,6 +52,9 @@ export default ({navigation}) => {
                   onBlur={() => setFieldTouched('title')}
                   value={values.title}
                 />
+                {errors.title ? (
+                  <Text style={{color: 'red'}}>{errors.title}</Text>
+                ) : null}
               </FormItem>
               <FormItem>
                 <Input
