@@ -3,7 +3,6 @@ import {View, ActivityIndicator, FlatList} from 'react-native';
 import styled from 'styled-components';
 
 import ViewContainer from '../components/ViewContainer';
-import Button from '../components/Button';
 import {getNotes} from '../services/NoteService';
 import {routes} from '../routes/routes';
 import FloatingButton from '../components/FloatingButton';
@@ -17,8 +16,7 @@ const NoteItem = styled(View)`
   border-bottom-width: 2px;
   border-left-color: #eee;
   border-left-width: 1px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 const Item = ({value}) => {
@@ -47,11 +45,6 @@ export default ({navigation}) => {
     setLoading(false);
   };
 
-  const reload = async () => {
-    setLoading(true);
-    await loadNotes();
-  };
-
   const goToCreateNoteScreen = () => {
     navigation.navigate(routes.CREATE_NOTE_SCREEN);
   };
@@ -65,14 +58,11 @@ export default ({navigation}) => {
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
-        <ViewContainer>
-          <Button onPress={reload} text="Atualizar" />
-          <FlatList
-            data={notes}
-            renderItem={({item}) => <Item value={item} />}
-            keyExtractor={(item) => item._id}
-          />
-        </ViewContainer>
+        <FlatList
+          data={notes}
+          renderItem={({item}) => <Item value={item} />}
+          keyExtractor={(item) => item._id}
+        />
       )}
       <FloatingButton onPress={goToCreateNoteScreen} />
     </ViewContainer>
