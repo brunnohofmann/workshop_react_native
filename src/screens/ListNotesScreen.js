@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import {View, ActivityIndicator, FlatList} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, ActivityIndicator, FlatList } from 'react-native';
 import styled from 'styled-components';
 
-import ViewContainer from '../components/ViewContainer';
-import {getNotes} from '../services/NoteService';
-import {routes} from '../routes/routes';
+import { getNotes } from '../services/NoteService';
+import { routes } from '../routes/routes';
 import FloatingButton from '../components/FloatingButton';
 import OpenDrawerIcon from '../components/OpenDrawerIcon';
 import Title from '../components/Typography/Title';
@@ -16,10 +15,22 @@ const NoteItem = styled(View)`
   border-bottom-width: 2px;
   border-left-color: #eee;
   border-left-width: 1px;
-  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 8px;
+  flex-basis: 0;
+  flex-grow: 1;
 `;
 
-const Item = ({value}) => {
+const ViewContainerList = styled(View)`
+  display: flex;
+  flex: 1;
+  margin: 0px;
+  padding: 0 16px;
+  background-color: ${(props) => props.theme.backgroundList};
+`;
+
+const Item = ({ value }) => {
   return (
     (value && (value.note || value.title) && (
       <NoteItem>
@@ -30,7 +41,7 @@ const Item = ({value}) => {
   );
 };
 
-export default ({navigation}) => {
+export default ({ navigation }) => {
   navigation.setOptions({
     title: 'My notes',
     headerLeft: () => <OpenDrawerIcon />,
@@ -54,17 +65,18 @@ export default ({navigation}) => {
   }, []);
 
   return (
-    <ViewContainer>
+    <ViewContainerList>
       {loading ? (
-        <ActivityIndicator size="large" />
+        <ActivityIndicator color="#ccc" size="large" />
       ) : (
-        <FlatList
-          data={notes}
-          renderItem={({item}) => <Item value={item} />}
-          keyExtractor={(item) => item._id}
-        />
-      )}
+          <FlatList
+            data={notes}
+            numColumns={2}
+            renderItem={({ item }) => <Item value={item} />}
+            keyExtractor={(item) => item._id}
+          />
+        )}
       <FloatingButton onPress={goToCreateNoteScreen} />
-    </ViewContainer>
+    </ViewContainerList>
   );
 };
