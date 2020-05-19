@@ -4,11 +4,17 @@ export default {
     button: {
       background: '#fff',
     },
+    text: {
+      color: '#fff',
+    },
   },
   light: {
     primaryColor: '#fff',
     button: {
       background: 'blue',
+    },
+    text: {
+      color: '#000',
     },
   },
 };

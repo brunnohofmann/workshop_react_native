@@ -36,7 +36,7 @@ const App = () => {
       <ThemeProvider>
         <ViewContainer>
           <SafeAreaView>
-            {/* <ChangeThemeButton /> */}
+            <ChangeThemeButton />
             <FlatList
               data={notes}
               renderItem={({item}) => <Note item={item} />}

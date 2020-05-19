@@ -8,12 +8,13 @@ const BoxText = styled(View)`
   margin: 16px;
   flex-basis: 0;
   flex-grow: 1;
+  background-color: ${(props) => props.theme.primaryColor};
 `;
 const SimpleText = styled(Text)`
-  color: #919191;
+  color: ${(props) => props.theme.text.color};
 `;
 const Title = styled(Text)`
-  color: #111111;
+  color: ${(props) => props.theme.text.color};
   font-weight: bold;
 `;
 
