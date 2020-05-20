@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, AsyncStorage} from 'react-native';
 import {Formik} from 'formik';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -9,6 +9,8 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import {createNote} from '../services/NoteService';
 import Text from '../components/Typography/Text';
+
+import {getDeviceToken} from '../utils/push-notification';
 
 const FormItem = styled(View)`
   padding: 10px 0px 10px 0px;
@@ -28,7 +30,8 @@ export default ({navigation}) => {
   const onSubmit = async (values) => {
     if (values && values.note) {
       setLoading(true);
-      const response = await createNote(values);
+      const tokenDevice = await getDeviceToken();
+      const response = await createNote(values, tokenDevice);
       setLoading(false);
       console.log(response);
     }
