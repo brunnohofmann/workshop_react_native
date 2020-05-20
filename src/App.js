@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, SafeAreaView, FlatList, ActivityIndicator} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, FlatList, SafeAreaView} from 'react-native';
 
 import styled from 'styled-components';
 import ThemeProvider, {ThemeProviderContext} from './ThemeProvider';
@@ -7,6 +7,7 @@ import ChangeThemeButton from './components/ChangeThemeButton';
 import ViewContainer from './components/ViewContainer';
 import Note from './components/Note';
 import {getNotes} from './services/NoteService';
+import AddNoteScreen from './AddNoteScreen';
 
 const CustomActivityIndicator = styled(ActivityIndicator)`
   margin-bottom: 36px;
@@ -37,15 +38,18 @@ const App = () => {
         <ViewContainer>
           <SafeAreaView>
             <ChangeThemeButton />
-            <FlatList
-              data={notes}
-              renderItem={({item}) => <Note item={item} />}
-              keyExtractor={(item) => item._id}
-              numColumns={2}
-              onEndReached={getListNotes}
-              onEndReachedThreshold={0.1}
-              ListFooterComponent={loading && <CustomActivityIndicator color="#00f" size="large" />}
-            />
+            <AddNoteScreen />
+            {/*<FlatList*/}
+            {/*  data={notes}*/}
+            {/*  renderItem={({item}) => <Note item={item} />}*/}
+            {/*  keyExtractor={(item) => item._id}*/}
+            {/*  numColumns={2}*/}
+            {/*  onEndReached={getListNotes}*/}
+            {/*  onEndReachedThreshold={0.1}*/}
+            {/*  ListFooterComponent={*/}
+            {/*    loading && <CustomActivityIndicator color="#00f" size="large" />*/}
+            {/*  }*/}
+            {/*/>*/}
           </SafeAreaView>
         </ViewContainer>
       </ThemeProvider>

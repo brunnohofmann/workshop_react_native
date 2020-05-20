@@ -5,5 +5,7 @@ const requestOptions = {
 };
 
 export const getNotes = (pagination = '') => {
-  return fetch(`${url}${pagination}`, requestOptions).then((response) => response.json());
+  return fetch(`${url}${pagination}`, requestOptions).then((response) =>
+    response.json(),
+  );
 };
