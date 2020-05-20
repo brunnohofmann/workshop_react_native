@@ -16,7 +16,7 @@ import MainDrawerWithStack from './routes/MainDrawerWithStack';
 enableScreens();
 
 export default () => {
- useEffect(() => {
+  useEffect(() => {
     pushNotificationService();
   });
   return (

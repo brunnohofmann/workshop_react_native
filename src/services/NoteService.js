@@ -11,15 +11,15 @@ export const createNote = (note) => {
     headers: headers,
     body: JSON.stringify(note),
   })
-  .then((response) => response.json())
-  .then((data) => data);
+    .then((response) => response.json())
+    .then((data) => data);
 };
 
-export const getNotes = () => {
-  return fetch(`${URL_API}/notes`, {
+export const getNotes = (queryString = '') => {
+  return fetch(`${URL_API}/notes${queryString}`, {
     method: 'GET',
     headers: headers,
   })
-  .then((response) => response.json())
-  .then((data) => data);
+    .then((response) => response.json())
+    .then((data) => data);
 };

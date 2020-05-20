@@ -1,6 +1,7 @@
 export default {
   light: {
     background: '#fff',
+    backgroundList: '#3b7a9f',
     buttons: {
       primaryBackground: '#337ab7',
       primaryTextColor: '#fff',
@@ -9,9 +10,9 @@ export default {
       borderColor: '#000000',
     },
     stackHeader: {
-      headerStyle: {backgroundColor: '#337ab7'},
-      headerTitleStyle: {color: '#fff'},
-      headerBackTitleStyle: {color: '#fff'},
+      headerStyle: { backgroundColor: '#337ab7' },
+      headerTitleStyle: { color: '#fff' },
+      headerBackTitleStyle: { color: '#fff' },
     },
     statusBar: {
       backgroundColor: '#337ab7',
@@ -21,7 +22,7 @@ export default {
   },
   dark: {
     background: '#000',
-
+    backgroundList: '#111111',
     buttons: {
       primaryBackground: '#fff',
       primaryTextColor: '#000',
@@ -30,9 +31,9 @@ export default {
       borderColor: '#9096B4',
     },
     stackHeader: {
-      headerStyle: {backgroundColor: '#000'},
-      headerTitleStyle: {color: '#fff'},
-      headerBackTitleStyle: {color: '#fff'},
+      headerStyle: { backgroundColor: '#000' },
+      headerTitleStyle: { color: '#fff' },
+      headerBackTitleStyle: { color: '#fff' },
     },
     statusBar: {
       backgroundColor: '#000',
