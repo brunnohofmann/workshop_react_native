@@ -992,6 +992,13 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@naturacosmeticos/natds-styles@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@naturacosmeticos/natds-styles/-/natds-styles-0.6.0.tgz#3c6d48ed493ebb8e407776bd45c4f9a1356fe502"
+  integrity sha512-OFga67Or1Am0koMXeuru0VF7zCxAxjd8KWYTzod391ta2PiW06iMPgankp3/DRJlvFi53cjx8kdqa7lg48Yitw==
+  dependencies:
+    hex-to-rgba "2.0.1"
+
 "@react-native-community/cli-debugger-ui@^4.8.0":
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-4.8.0.tgz#9a6419b29be69422e0056bbb1874775750351d22"
@@ -3232,6 +3239,11 @@ hermes-engine@~0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/hermes-engine/-/hermes-engine-0.4.1.tgz#2d02b295596298643c4d24b86687eb554db9e950"
   integrity sha512-Y3JFC8PD7eN3KpnrzrmvMAqp0IwnZrmP/oGOptvaSu33d7Zq/8b/2lHlZZkNvRl7/I1Q0umTX8TByK7zzLfTXA==
+
+hex-to-rgba@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/hex-to-rgba/-/hex-to-rgba-2.0.1.tgz#4176977882a1cb32b83ce5ab1db6828ab84d5a13"
+  integrity sha512-5XqPJBpsEUMsseJUi2w2Hl7cHFFi3+OO10M2pzAvKB1zL6fc+koGMhmBqoDOCB4GemiRM/zvDMRIhVw6EkB8dQ==
 
 hoist-non-react-statics@^3.0.0:
   version "3.3.2"

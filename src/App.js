@@ -1,70 +1,29 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, {useState, createContext} from 'react';
+import {SafeAreaView, Button} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {ThemeProvider} from 'styled-components';
+import {themes} from '@naturacosmeticos/natds-styles';
 
 import Note from './components/Note';
 
+export const AppThemeProvider = createContext({activeTheme: 'light'});
+
 const App = () => {
+  const [activeTheme, setActiveTheme] = useState('light');
+
+  const changeTheme = () => {
+    setActiveTheme(activeTheme === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <>
-      <SafeAreaView>
-        <Note title='tarefa 2' note='tenho muita coisa pra fazer hoje'></Note>
-      </SafeAreaView>
-    </>
+    <AppThemeProvider.Provider value={{activeTheme, changeTheme}}>
+      <ThemeProvider theme={themes.avon[activeTheme]}>
+        <SafeAreaView>
+          <Note title="tarefa 2" note="tenho muita coisa pra fazer hoje"></Note>
+        </SafeAreaView>
+      </ThemeProvider>
+    </AppThemeProvider.Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
 export default App;
