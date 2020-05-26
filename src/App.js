@@ -7,6 +7,7 @@ import {ThemeProvider} from 'styled-components';
 import {themes} from '@naturacosmeticos/natds-styles';
 
 import Note from './components/Note';
+import ViewContainer from './components/ViewContainer';
 
 export const AppThemeProvider = createContext({activeTheme: 'light'});
 
@@ -20,9 +21,9 @@ const App = () => {
   return (
     <AppThemeProvider.Provider value={{activeTheme, changeTheme}}>
       <ThemeProvider theme={themes.avon[activeTheme]}>
-        <SafeAreaView>
+        <ViewContainer>
           <Note title="tarefa 2" note="tenho muita coisa pra fazer hoje"></Note>
-        </SafeAreaView>
+        </ViewContainer>
       </ThemeProvider>
     </AppThemeProvider.Provider>
   );
