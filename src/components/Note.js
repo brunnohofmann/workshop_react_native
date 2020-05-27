@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, Button, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import styled from 'styled-components';
 
 import {AppThemeProvider} from '../App';
@@ -9,6 +9,8 @@ const CustomView = styled(View)`
   border: solid 1px #aaa;
   margin: 16px;
   padding: 24px;
+  flex-basis: 0;
+  flex-grow: 1;
 `;
 
 const Title = styled(Text)`
@@ -22,8 +24,6 @@ const Note = ({title, note}) => {
 
   return (
     <CustomView>
-      <Button onPress={changeTheme} title="Trocar Tema" />
-
       <Title> {title} </Title>
       <Text> {note} </Text>
     </CustomView>
