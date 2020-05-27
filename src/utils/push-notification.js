@@ -37,7 +37,12 @@ const requestPermission = async () => {
   }
 };
 
-const notificationListener = () => {
+const notificationListener = async () => {
+  messaging.onMessage((message) => {
+    console.log('onMessaging');
+    console.log(message);
+  });
+
   notificating.onNotification((notification) => {
     console.log('onNotification');
     console.log(notification);
@@ -54,17 +59,26 @@ const notificationListener = () => {
     notificating.displayNotification(notification);
   });
 
-  // notificating.onNotificationDisplayed((notification) => {
-  //   console.log('onNotificationDisplayed');
-  //   console.log(notification);
-  // });
+  notificating.onNotificationDisplayed((notification) => {
+    console.log('onNotificationDisplayed');
+    console.log(notification);
+  });
 
   notificating.onNotificationOpened((objMessage) => {
     console.log('onNotificationOpened');
     console.log(objMessage.notification);
-    Alert.alert(objMessage.notification._title, objMessage.notification._body);
+
+    const title =
+      objMessage.notification._title || objMessage.notification._data.title;
+    Alert.alert(title, objMessage.notification._body);
   });
+
+  const notificationOpen = await notificating.getInitialNotification();
+  if (notificationOpen) {
+    console.log('getInitialNotification');
+    console.log(notificationOpen.notification);
+  }
 };
 
 export const pushNotificationService = () => checkPermissionAndListMessages();
-export const getDeviceToken = getToken; 
+export const getDeviceToken = getToken;
