@@ -4,6 +4,8 @@ import {createContext} from 'react';
 
 import themes from './configs/themes';
 import App from './App';
+import codePush from "react-native-code-push";
+
 
 const DEFAULT_THEME = 'light';
 
@@ -24,4 +26,4 @@ const Providers = () => {
   );
 };
 
-export default Providers;
+export default codePush(Providers);
